@@ -1,0 +1,15 @@
+HTML
+
+<a href="large.jpg" class="glightbox">
+  <img src="small.jpg" alt="image" />
+</a>
+
+JS
+
+import GLightbox from 'glightbox';
+
+const lightbox = GLightbox({
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: true
+});

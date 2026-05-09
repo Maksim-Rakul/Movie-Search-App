@@ -1,0 +1,82 @@
+HTML
+
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+        <div class="swiper-slide">Slide 10</div>
+        <div class="swiper-slide">Slide 11</div>
+        <div class="swiper-slide">Slide 12</div>
+      </div>
+
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+
+JS
+
+// Якщо ви використовуєте npm/бандлер
+import Swiper from "swiper/bundle";
+import "swiper/css/bundle";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const swiper = new Swiper(".mySwiper", {
+    direction: "horizontal",
+    loop: false, // Зупиняється на останньому слайді
+
+    // Навігація
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    // Скролбар
+    scrollbar: {
+      el: ".swiper-scrollbar",
+      hide: false,
+      draggable: true,
+    },
+
+    // Додаткові корисні налаштування
+    slidesPerView: 1, // Скільки слайдів показувати одночасно
+    spaceBetween: 20, // Відстань між слайдами
+    breakpoints: {
+      // Адаптивність
+      640: {
+        slidesPerView: 2,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1024: {
+        slidesPerView: 8,
+      },
+    },
+  });
+
+  // Ініціалізація GLightbox
+  const lightbox = GLightbox({
+    loop: true,
+  });
+
+CSS
+
+.swiper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 0;
+  height: 400px;
+}
+
+.swiper-slide {
+  border: 1px solid black;
+  height: 400px;
+}
