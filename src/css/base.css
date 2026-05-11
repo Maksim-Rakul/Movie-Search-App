@@ -1,0 +1,44 @@
+body {
+  background-color: rgba(10, 10, 10, 1);
+  font-family: "Public Sans", sans-serif;
+}
+
+button {
+  padding: 0;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+span {
+  color: inherit;
+}
+
+.container {
+  width: 375px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

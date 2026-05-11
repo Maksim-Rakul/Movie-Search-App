@@ -1,0 +1,132 @@
+.header {
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.header__logo {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dc2626;
+  border-radius: 2px;
+}
+
+.header__logo-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.header__form {
+}
+
+.header__form-input {
+  width: 259px;
+  padding: 6px 21px;
+  border-radius: 30px;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(10, 10, 10, 0.8);
+  border: none;
+}
+
+.header__form-input:focus {
+  border: none;
+  outline: none;
+}
+
+.header__menu {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__menu-icon {
+  width: 26px;
+  height: 26px;
+  stroke: #b2b2b2;
+}
+
+/* MOBILE MENU */
+
+.header__mobile-menu {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+  transform: translateY(-20px);
+
+  max-width: 375px;
+  margin: 0 auto;
+
+  transition:
+    opacity 250ms ease-in-out,
+    transform 250ms ease-in-out;
+}
+
+.header__mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.header__mobile-item {
+  transition: background-color 250ms ease-in-out;
+}
+
+.header__mobile-item:hover {
+  background-color: #161616;
+}
+
+.header__mobile-link {
+  padding: 9px 0;
+  padding-left: 25px;
+  font-size: 12px;
+  color: #b2b2b2;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__mobile-icon {
+  width: 12px;
+  height: 12px;
+  stroke: transparent;
+  fill: #b2b2b2;
+  transition: fill 250ms ease-in-out;
+}
+
+.header__mobile-item:hover .header__mobile-icon {
+  fill: #fff;
+}
+
+.swiper-pagination {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.bullet {
+  display: inline-block;
+  z-index: 10;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(217, 217, 217, 0.3);
+}
+
+.active-bullet {
+  background-color: #d9d9d9;
+  width: 18px;
+  border-radius: 20px;
+}

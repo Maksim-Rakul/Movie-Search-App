@@ -1,0 +1,6 @@
+.is-open-mobile {
+  display: block;
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}

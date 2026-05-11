@@ -1,0 +1,132 @@
+.hero__swiper {
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+.hero__slide {
+  background-color: #fff;
+  position: relative;
+}
+
+.hero__slide-container {
+  height: calc(100vh - 46px);
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: start;
+}
+
+.hero__slider-img-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero__slider-img-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(10, 10, 10, 1) 10%,
+    rgba(0, 0, 0, 0.11) 40%
+  );
+}
+
+.hero__slider-img {
+  height: 100%;
+  position: relative;
+  z-index: -1;
+}
+
+.hero__swiper-content {
+  color: #fff;
+}
+
+/*  */
+
+.hero_slide-content {
+  padding-bottom: 30px;
+}
+
+.hero_slide-rate-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero_slide-rate-icon {
+  width: 13px;
+  height: 13px;
+  fill: #facc15;
+}
+
+.hero_slide-rate-val {
+  color: #facc15;
+}
+
+.silwer {
+  color: #b2b2b2;
+}
+
+.hero__slide-title {
+  font-weight: 400;
+  font-size: 58px;
+  color: #fff;
+  font-family: "Cormorant Garamond", sans-serif;
+}
+
+.hero_slide-desc {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.66667;
+  color: #b2b2b2;
+  margin-bottom: 27px;
+}
+
+.hero__slide-btns-wrap {
+  display: flex;
+  gap: 28px;
+}
+
+.hero__slide-btn {
+  padding: 11px 28px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #000;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 5px;
+  width: 144px;
+}
+
+.hero__slide-btn:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero__slide-btn-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.hero__slide-btn-more {
+  background: rgba(53, 53, 53, 0.7);
+  color: #fff;
+}
+
+.hero__slide-btn-more:hover {
+  background-color: rgba(53, 53, 53, 0.2);
+}
+
+.hero__slide-btn-more svg {
+  stroke: #fff;
+}

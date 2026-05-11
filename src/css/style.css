@@ -1,1 +1,11 @@
 @import url(./slider.css);
+@import url(./base.css);
+@import url(./header.css);
+
+/* MAIN PAGE */
+
+@import url(./hero.css);
+@import url(./ganres.css);
+@import url(./movies.css);
+
+@import url(./special.css);
