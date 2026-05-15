@@ -8,6 +8,16 @@ export default defineConfig({
   build: {
     outDir: "../dist",
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "src/index.html"),
+        // Додайте явно ваш moviePage.html
+        "pages/moviePage/moviePage": path.resolve(
+          __dirname,
+          "src/pages/moviePage/moviePage.html",
+        ),
+      },
+    },
   },
   plugins: [
     injectHTML({
