@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/moviePage.html",
+      "destination": "/pages/moviePage/moviePage.html"
+    },
+    {
+      "source": "/moviePage",
+      "destination": "/pages/moviePage/moviePage.html"
+    }
+  ]
+}

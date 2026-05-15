@@ -364,7 +364,7 @@ export function renderMediaVideo(arr) {
       <li class="media__video-item">
                   <iframe
                     class="media__video-frame"
-                    src="https:www.youtube.com/embed/${key}"
+                    src="https://www.youtube.com/embed/${key}"
                     frameborder="0"
                   ></iframe>
                 </li>
