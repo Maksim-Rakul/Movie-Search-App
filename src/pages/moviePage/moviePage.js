@@ -28,7 +28,10 @@ import {
 mobileMenu();
 castSliderInit();
 
-const id = new URLSearchParams(window.location.search).get("id");
+const hash = window.location.hash.substring(1);
+console.log(hash);
+
+const id = new URLSearchParams(hash).get("id");
 const hero = document.querySelector(".hero");
 
 Promise.all([

@@ -72,7 +72,7 @@ export function movieClickHandler(event) {
 
   const banerId = movieSlide.dataset.id;
 
-  window.location.href = `/pages/moviePage/moviePage.html?id=${banerId}`;
+  window.location.href = `/pages/moviePage/moviePage.html#id=${banerId}`;
 }
 
 export function changeTypeHandler(event) {
@@ -178,7 +178,7 @@ export function banerMoreBtnHandler(event) {
   const banerId = btn.closest(".hero__slide").dataset.banerid;
   console.log(banerId);
 
-  window.location.href = `/pages/moviePage/moviePage.html?id=${banerId}`;
+  window.location.href = `/pages/moviePage/moviePage.html#id=${banerId}`;
 }
 
 export async function heroBtnHandler(event) {}
