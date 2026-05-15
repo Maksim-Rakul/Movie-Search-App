@@ -8,4 +8,6 @@
 @import url(./ganres.css);
 @import url(./movies.css);
 
-@import url(./special.css);
+/* ELEMENTS */
+
+@import url(./movie-card.css);

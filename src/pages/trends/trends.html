@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actor</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="./trends.css" />
+  </head>
+  <body>
+    <load src="/partials/header.html" />
+
+    <main>
+      <section class="movies-page">
+        <div class="container">
+          <h1 class="movies-page-title">Trends</h1>
+
+          <ul class="category__list trend-page__category">
+            <li
+              class="category__item movies-page__category-item active-btn"
+              data-type="all"
+            >
+              All
+            </li>
+            <li
+              class="category__item movies-page__category-item"
+              data-type="movie"
+            >
+              Movies
+            </li>
+            <li
+              class="category__item movies-page__category-item"
+              data-type="tv"
+            >
+              Serials
+            </li>
+          </ul>
+
+          <div class="trend__time-wrap">
+            <button class="trend__time-btn time-actve" data-time="day">
+              Today
+            </button>
+            <button class="trend__time-btn" data-time="week">Week</button>
+          </div>
+
+          <ul class="movies-page__list trend-page__list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./trends.js"></script>
+  </body>
+</html>

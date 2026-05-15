@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search App</title>
+
+    <!-- modern-normalize -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Glightbox CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <load src="/partials/header.html" />
+
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <div class="swiper hero__swiper">
+          <div class="swiper-wrapper js-banner-container"></div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <!-- CATEGORY SECTION -->
+      <section class="category">
+        <div class="container">
+          <div class="category_type-wrap">
+            <h2 class="category__title">By ganres</h2>
+            <div class="category__type js-category-type">
+              <button class="category__btn active-btn">Movies</button>
+              <button class="category__btn">Serials</button>
+            </div>
+          </div>
+
+          <div class="category__ganres">
+            <ul class="category__list js-ganres-list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- MOVIES -->
+      <section class="movies">
+        <div class="container">
+          <ul class="movies__list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/sliderInit.js"></script>
+  </body>
+</html>

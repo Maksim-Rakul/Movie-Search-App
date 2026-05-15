@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serial</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="./serials.css" />
+  </head>
+  <body>
+    <load src="/partials/header.html" />
+
+    <main>
+      <section class="serials-page">
+        <div class="container">
+          <h1 class="movies-page-title">Serials</h1>
+
+          <ul class="category__list serials_page-category">
+            <li
+              class="category__item movies-page__category-item active-btn"
+              data-type="popular"
+            >
+              Popular
+            </li>
+            <li
+              class="category__item movies-page__category-item"
+              data-type="top_rated"
+            >
+              In cinema
+            </li>
+            <li
+              class="category__item movies-page__category-item"
+              data-type="airing_today"
+            >
+              Top raiting
+            </li>
+            <li
+              class="category__item movies-page__category-item"
+              data-type="on_the_air"
+            >
+              Soon
+            </li>
+          </ul>
+
+          <ul class="serials-page__list movies-page__list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./serials.js"></script>
+  </body>
+</html>

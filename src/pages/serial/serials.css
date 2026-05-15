@@ -1,0 +1,37 @@
+.movies-page-title {
+  font-family: "Cormorant Garamond", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff;
+  margin-top: 36px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.movies-page__category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 26px;
+  margin-bottom: 51px;
+}
+
+.movies-page__category-item {
+  padding: 4px 12px;
+  flex-basis: calc((100% - 26px) / 2);
+  text-align: center;
+}
+
+.movies-page__list {
+  display: flex;
+  column-gap: 11px;
+  flex-wrap: wrap;
+}
+
+.serials-page__list {
+  margin-top: 51px;
+}
+
+.movies-page__item {
+  flex-basis: calc((100% - 11px) / 2);
+}

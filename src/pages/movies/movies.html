@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="./movies.css" />
+  </head>
+  <body>
+    <load src="/partials/header.html" />
+
+    <main>
+      <section class="movies-page">
+        <div class="container">
+          <h1 class="movies-page-title">Movies</h1>
+
+          <ul class="category__list movies-page__category">
+            <li
+              class="category__item movies-page__category-item active-btn"
+              data-type="popular"
+            >
+              Popular
+            </li>
+            <li
+              class="category__item movies-page__category-item"
+              data-type="now_playing"
+            >
+              In cinema
+            </li>
+            <li
+              class="category__item movies-page__category-item"
+              data-type="top_rated"
+            >
+              Top raiting
+            </li>
+            <li
+              class="category__item movies-page__category-item"
+              data-type="upcoming"
+            >
+              Soon
+            </li>
+          </ul>
+
+          <ul class="movies-page__list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./movies.js"></script>
+  </body>
+</html>

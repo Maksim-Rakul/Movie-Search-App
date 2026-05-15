@@ -1,0 +1,82 @@
+import Swiper from "swiper/bundle";
+import "swiper/css";
+
+export function banerSliderInit() {
+  document.addEventListener("DOMContentLoaded", () => {
+    const swiper = new Swiper(".hero__swiper", {
+      autoplay: {
+        delay: 6000,
+      },
+      direction: "horizontal",
+      loop: true,
+
+      pagination: {
+        el: ".swiper-pagination",
+        type: "bullets",
+        clickable: true,
+        bulletClass: "bullet",
+        bulletActiveClass: "active-bullet",
+      },
+
+      speed: 700,
+
+      slidesPerView: 1,
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 1,
+        },
+        1024: {
+          slidesPerView: 1,
+        },
+      },
+    });
+  });
+}
+
+export function sliderInit() {
+  const swiper = new Swiper(".movies__cinema", {
+    direction: "horizontal",
+    loop: true,
+
+    speed: 700,
+
+    navigation: {
+      nextEl: ".movie_slide-next",
+      prevEl: ".movie_slide-prev",
+      addIcons: true,
+    },
+
+    slidesPerView: 2,
+    breakpoints: {
+      375: {
+        slidesPerView: 2.3,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 2,
+        spaceBetween: 11,
+      },
+    },
+  });
+}
+
+export function castSliderInit() {
+  const swiper = new Swiper(".cast__slider", {
+    direction: "horizontal",
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 8,
+
+    speed: 700,
+
+    scrollbar: {
+      el: ".swiper-scrollbar",
+      draggable: true,
+    },
+  });
+}

@@ -1,0 +1,55 @@
+.movies-page-title {
+  font-family: "Cormorant Garamond", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff;
+  margin-top: 36px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.movies-page__category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.movies-page__category-item {
+  padding: 4px 12px;
+  flex-basis: calc((100% - 26px) / 2);
+  text-align: center;
+}
+
+.movies-page__list {
+  display: flex;
+  column-gap: 11px;
+  flex-wrap: wrap;
+}
+
+.movies-page__item {
+  flex-basis: calc((100% - 11px) / 2);
+}
+
+.trend__time-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 26px;
+  margin-bottom: 54px;
+}
+.trend__time-btn {
+  font-weight: 400;
+  font-size: 14px;
+
+  color: #b2b2b2;
+  background-color: transparent;
+  border: none;
+  padding: 6px 12px;
+}
+.time-actve {
+  background: #3b3b3b;
+  color: #fff;
+  border-radius: 12px;
+}
