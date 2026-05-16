@@ -4,7 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serial</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="./serialPage.css" />
 </head>
 <body>
+    <load src="/partials/header.html" />
+
+    <main>
+        <section class="hero">
+            <div class="hero__content-wrap container js-hero-tv-content"></div>
+        </section>
+
+        <section class="info__nav">
+            <div class="container">
+                <ul class="info__nav-list">
+                    <li class="info__nav-item info__nav-active" data-type="info">
+                    Over
+                    </li>
+                    <li class="info__nav-item" data-type="cast">Cast</li>
+                    <li class="info__nav-item" data-type="reviews">
+                    Reviews<span class="reviews-count"></span>
+                    </li>
+                    <li class="info__nav-item" data-type="media">Media</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="info__wrap">
+        <section class="info">
+          <div class="container">
+            <div class="swiper cast__slider">
+              <h2 class="cast__title">Cast</h2>
+              <ul class="swiper-wrapper" id="info__slider-list"></ul>
+              <div class="swiper-scrollbar"></div>
+            </div>
+            <h2 class="cast__title recommend__title">Recommends</h2>
+            <div class="swiper cast__slider">
+              <ul class="swiper-wrapper" id="recommend__slider-list"></ul>
+              <div class="swiper-scrollbar"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="cast hidden">
+          <div class="container">
+            <div class="swiper cast__slider">
+              <h2 class="cast__title">Cast</h2>
+              <ul class="swiper-wrapper" id="cast__slider-list"></ul>
+              <div class="swiper-scrollbar"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="reviews hidden">
+          <div class="container">
+            <h2 class="cast__title">Reviews</h2>
+            <ul class="reviews__list"></ul>
+          </div>
+        </section>
+
+        <section class="media hidden">
+          <div class="container">
+            <div class="media__wrap-list">
+              <h3 class="cast__title media__title">Video</h3>
+              <ul class="media__video-list"></ul>
+            </div>
+
+            <div class="media__wrap-list">
+              <h3 class="cast__title media__title">Gallery</h3>
+              <ul class="media__gallery-list"></ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="./serialPage.js"></script>
 </body>
 </html>

@@ -56,3 +56,7 @@ export const mediaVideoContainer = document.querySelector(".media__video-list");
 export const mediaGalleryContainer = document.querySelector(
   ".media__gallery-list",
 );
+
+// SERIALS
+
+export const serialsPageHero = document.querySelector(".js-hero-tv-content");

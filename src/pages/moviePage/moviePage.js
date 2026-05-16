@@ -20,6 +20,7 @@ import { castSliderInit } from "../../js/sliderInit";
 import * as refs from "../../js/refs.js";
 import GLightbox from "glightbox";
 import {
+  castClickHandler,
   heroBtnHandler,
   infoNavHandler,
   movieClickHandler,
@@ -28,10 +29,11 @@ import {
 mobileMenu();
 castSliderInit();
 
-const hash = window.location.hash.substring(1);
-console.log(hash);
 
-const id = new URLSearchParams(hash).get("id");
+const url = new URLSearchParams(window.location.search);
+const id = url.get("id");
+
+
 const hero = document.querySelector(".hero");
 
 Promise.all([
@@ -56,13 +58,22 @@ Promise.all([
   hero.style.backgroundPosition = "center";
   hero.style.backgroundRepeat = "no-repeat";
 
-  renderMoviePageById(movieInfo, video.results[0].key);
+  const trailer = video.results.find((item) => {
+    return item.type === "Trailer";
+  });
+
+  renderMoviePageById(movieInfo, trailer);
   renderInfoCastsById(actor.cast);
   renderCastsById(actor.cast);
   recommendRender(recommend.results);
   renderReviews(reviews.results);
   renderMediaVideo(video.results);
   renderMediaGallery(gallery.backdrops.slice(0, 16));
+
+  refs.recommendContainer.addEventListener("click", movieClickHandler);
+
+  refs.infoCastContainer.addEventListener("click", castClickHandler);
+  refs.castContainer.addEventListener("click", castClickHandler);
 
   const lightbox = GLightbox({
     touchNavigation: true,
@@ -71,5 +82,4 @@ Promise.all([
   });
 });
 
-refs.recommendContainer.addEventListener("click", movieClickHandler);
 refs.infoNav.addEventListener("click", infoNavHandler);

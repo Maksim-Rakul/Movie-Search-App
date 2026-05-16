@@ -1,4 +1,10 @@
-import { dateEdit, editReviewDate, editTime, getYears } from "./helpers.js";
+import {
+  dateEdit,
+  descEdit,
+  editReviewDate,
+  editTime,
+  getYears,
+} from "./helpers.js";
 import * as refs from "./refs.js";
 import { banerSliderInit, sliderInit } from "./sliderInit.js";
 
@@ -58,7 +64,6 @@ export function banerRender(arr) {
 }
 
 function movieSliderRenderStr(arr) {
-
   console.log(arr);
 
   const renderStr = arr
@@ -66,7 +71,7 @@ function movieSliderRenderStr(arr) {
       const name = item.name ? "Serial" : "Movie";
 
       return `
-        <a href="#id=${item.id}" class="swiper-slide movie__slide" data-id="${item.id}" data-type="${name}">
+        <div class="swiper-slide movie__slide" data-id="${item.id}" data-type="${name}">
                     <div class="movie__slide-img-wrap">
                       <img src="https://image.tmdb.org/t/p/original/${item.backdrop_path}" alt="${item.original_title || item.original_name}" />
 
@@ -93,7 +98,7 @@ function movieSliderRenderStr(arr) {
                       <h3 class="movie__slide-name">${item.original_title || item.original_name}</h3>
                       <p class="movie__slide-date">${dateEdit(item.release_date || item.first_air_date)}</p>
                     </div>
-                  </a>
+                  </div>
         `;
     })
     .join("");
@@ -239,17 +244,25 @@ export function renderMoviePageById(
             </p>
           </div>
 
-          <p class="hero__quote">"${tagline}"</p>
+          ${tagline ? `<p class="hero__quote">"${tagline}"</p>` : ""}
           <p class="hero__desc">
             ${overview}
           </p>
 
-          <a href="https:www.youtube.com/embed/${video}" class="hero__btn glightbox" id="hero__btn">
+          ${
+            video
+              ? `
+            <a href="https:www.youtube.com/embed/${video.key}" class="hero__btn glightbox" id="hero__btn">
             <svg class="hero__slide-btn-icon hero__btn-icon">
               <use href="/sprites.svg#icon-play"></use>
             </svg>
             Trailer
           </a>
+            `
+              : ""
+          }
+
+          
   `;
 
   refs.moviePageHero.innerHTML = renderStr;
@@ -259,18 +272,18 @@ export function renderMoviePageById(
 
 export function renderInfoCastsById(arr) {
   const renderStr = arr
-    .map(({ cast_id, profile_path, name, character }) => {
+    .map(({ id, profile_path, name, character }) => {
       const actorImg = profile_path
         ? `https://image.tmdb.org/t/p/original${profile_path}`
         : `/actor.png`;
 
       return `
-      <li class="cast__slider-item swiper-slide" data-id="${cast_id}">
-        <a href="#" class="cast__slider-link">
+      <li class="cast__slider-item swiper-slide" data-id="${id}">
+        <div href="#" class="cast__slider-link">
           <img src="${actorImg}" alt="" class="cast__slider-img" />
           <p class="cast__slider-name">${name}</p>
           <p class="cast__slider-role">${character}</p>
-        </a>
+        </div>
       </li>
     `;
     })
@@ -333,12 +346,12 @@ export function renderReviews(arr) {
                     rating
                       ? `
                     <div class="reviews__author-rate">
-                    <svg class="reviews__author-rate-icon">
-                      <use href="/sprites.svg#icon-star"></use>
-                    </svg>
+                      <svg class="reviews__author-rate-icon">
+                        <use href="/sprites.svg#icon-star"></use>
+                      </svg>
 
-                    <p>${rating} / 10</p>
-                  </div>
+                      <p>${rating} / 10</p>
+                    </div>
                     `
                       : ""
                   }
@@ -390,4 +403,93 @@ export function renderMediaGallery(arr) {
     .join("");
 
   refs.mediaGalleryContainer.innerHTML = renderStr;
+}
+
+// SERIALS
+
+export function renderSerialPageById(
+  {
+    id,
+    poster_path,
+    genres,
+    name,
+    first_air_date,
+    seasons,
+    original_language,
+    budget,
+    tagline,
+    overview,
+  },
+  video,
+) {
+  const genresStr = genres
+    .map((genre) => {
+      return `
+     <li class="hero__genres-item">${genre.name}</li>
+    `;
+    })
+    .join("");
+
+  const episodCount = seasons.reduce((acc, { episode_count }) => {
+    return (acc += episode_count);
+  }, 0);
+
+  const renderStr = `
+    <img class="hero__movie-img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="" />
+          <ul class="hero__genres-list">
+            ${genresStr}
+          </ul>
+
+          <h2 class="hero__movie-name">${name}</h2>
+
+          <ul class="hero__data-list">
+            <li class="hero__data-item">
+              <svg class="hero__data-icon">
+                <use href="/sprites.svg#icon-date"></use>
+              </svg>
+              <p class="hero__data-text">${getYears(first_air_date)}</p>
+            </li>
+
+            <li class="hero__data-item">
+
+              <p class="hero__data-text">${seasons.length} seasons</p>
+            </li>
+
+            <li class="hero__data-item">
+
+              <p class="hero__data-text">${episodCount} episodes</p>
+            </li>
+          </ul>
+
+          <div class="hero__rate-wrap">
+            <svg class="hero__rate-icon">
+              <use href="/sprites.svg#icon-star"></use>
+            </svg>
+            <p class="hero__rate-text">
+              <span class="rate-color">7.6</span> / 10
+            </p>
+          </div>
+
+          ${tagline ? `<p class="hero__quote">"${tagline}"</p>` : ""}
+          <p class="hero__desc">
+            ${descEdit(overview)}
+          </p>
+
+
+
+          ${
+            video
+              ? `
+            <a href="https:www.youtube.com/embed/${video.key}" class="hero__btn glightbox" id="hero__btn">
+            <svg class="hero__slide-btn-icon hero__btn-icon">
+              <use href="/sprites.svg#icon-play"></use>
+            </svg>
+            Trailer
+          </a>
+            `
+              : ""
+          }
+  `;
+
+  refs.serialsPageHero.innerHTML = renderStr;
 }

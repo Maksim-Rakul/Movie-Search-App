@@ -63,24 +63,6 @@ export function changeGanreHandler(event) {
   }
 }
 
-export function movieClickHandler(event) {
-  const movieSlide = event.target.closest(".movie__slide");
-
-  if (!movieSlide) {
-    return;
-  }
-
-  const type = movieSlide.dataset.type;
-  const banerId = movieSlide.dataset.id;
-
-  const href =
-    type === "Movie"
-      ? `/pages/moviePage/moviePage.html`
-      : `/pages/serialPage/serialPage.html`;
-
-  window.location.href = `${href}#id=${banerId}`;
-}
-
 export function changeTypeHandler(event) {
   if (event.target.classList.contains("category__type")) {
     return;
@@ -174,18 +156,6 @@ export function trendTimeHandler(event) {
   });
 }
 
-export function banerMoreBtnHandler(event) {
-  const btn = event.target.closest(".js-more-btn");
-
-  if (!btn) {
-    return;
-  }
-
-  const banerId = btn.closest(".hero__slide").dataset.banerid;
-
-  window.location.href = `/pages/moviePage/moviePage.html#id=${banerId}`;
-}
-
 export async function heroBtnHandler(event) {}
 
 export function infoNavHandler(event) {
@@ -214,4 +184,46 @@ export function infoNavHandler(event) {
   pageList[indexPage].classList.remove("hidden");
 
   // refs.infoContainer.children[index].classList.remove;
+}
+
+export async function movieClickHandler(event) {
+  const movieSlide = event.target.closest(".movie__slide");
+
+  if (!movieSlide) {
+    return;
+  }
+
+  const bannerId = movieSlide.dataset.id;
+  const type = movieSlide.dataset.type;
+
+  const href =
+    type === "Movie"
+      ? `/pages/moviePage/moviePage.html`
+      : `/pages/serialPage/serialPage.html`;
+
+  window.location.href = `${href}?id=${bannerId}`;
+}
+
+export async function banerMoreBtnHandler(event) {
+  const btn = event.target.closest(".js-more-btn");
+
+  if (!btn) {
+    return;
+  }
+
+  const banerId = btn.closest(".hero__slide").dataset.banerid;
+
+  window.location.href = `/pages/moviePage/moviePage.html?id=${banerId}`;
+}
+
+export function castClickHandler(event) {
+  const actor = event.target.closest(".cast__slider-item");
+
+  if (!actor) {
+    return;
+  }
+
+  const actorId = actor.dataset.id;
+
+  window.location.href = `/pages/actor/actor.html?id=${actorId}`;
 }

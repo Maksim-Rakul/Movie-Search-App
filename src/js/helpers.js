@@ -38,3 +38,8 @@ export function editReviewDate(date) {
 
   return `${day}.${month}.${year}`;
 }
+
+export function descEdit(desc) {
+  const descArr = desc.split(".");
+  return descArr.slice(0, 2).join(".");
+}

@@ -126,30 +126,28 @@ export const getGalleryByMovieId = async (id) => {
   return res.data;
 };
 
-// https://api.themoviedb.org/3/movie/{movie_id}/images
+// SERIALS
 
-// TV BY ID
+export const getSerialById = async (id) => {
+  const res = await api.get(`/tv/${id}`);
 
-// export const getTcById = async (id) => {
-//   const res = await api.get(`/movie/${id}`);
+  return res.data
+}
 
-//   return res.data;
-// };
+export const getVideoSerialById = async (id) => {
+  const res = await api.get(`/tv/${id}/videos`);
 
-// export const getTvByMovieId = async (id) => {
-//   const res = await api.get(`/movie/${id}/credits`);
+  return res.data
+}
 
-//   return res.data;
-// };
+export const getCastSerialById = async (id) => {
+  const res = await api.get(`/tv/${id}/credits`);
 
-// export const getTvByMovieId = async (id) => {
-//   const res = await api.get(`/movie/${id}/recommendations`);
+  return res.data
+}
 
-//   return res.data;
-// };
+export const getRecSerialById = async (id) => {
+  const res = await api.get(`/tv/${id}/recommendations`);
 
-// export const getTvByMovieId = async (id) => {
-//   const res = await api.get(`/movie/${id}/videos`);
-
-//   return res.data;
-// };
+  return res.data
+}
