@@ -1,6 +1,30 @@
 {
   "rewrites": [
     {
+      "source": "/movies",
+      "destination": "/movies/movies.html"
+    },
+    {
+      "source": "/movies.html",
+      "destination": "/movies/movies.html"
+    },
+    {
+      "source": "/movies/:path*",
+      "destination": "/movies/movies.html"
+    },
+    {
+      "source": "/serials",
+      "destination": "/serial/serials.html"
+    },
+    {
+      "source": "/serials.html",
+      "destination": "/serial/serials.html"
+    },
+    {
+      "source": "/serials/:path*",
+      "destination": "/serial/serials.html"
+    },
+    {
       "source": "/moviePage",
       "destination": "/moviePage/moviePage.html"
     },
@@ -11,6 +35,42 @@
     {
       "source": "/moviePage/:path*",
       "destination": "/moviePage/moviePage.html"
+    },
+    {
+      "source": "/serialPage",
+      "destination": "/serialPage/serialPage.html"
+    },
+    {
+      "source": "/serialPage.html",
+      "destination": "/serialPage/serialPage.html"
+    },
+    {
+      "source": "/serialPage/:path*",
+      "destination": "/serialPage/serialPage.html"
+    },
+    {
+      "source": "/actor",
+      "destination": "/actor/actor.html"
+    },
+    {
+      "source": "/actor.html",
+      "destination": "/actor/actor.html"
+    },
+    {
+      "source": "/actor/:path*",
+      "destination": "/actor/actor.html"
+    },
+    {
+      "source": "/trends",
+      "destination": "/trends/trends.html"
+    },
+    {
+      "source": "/trends.html",
+      "destination": "/trends/trends.html"
+    },
+    {
+      "source": "/trends/:path*",
+      "destination": "/trends/trends.html"
     }
   ],
   "cleanUrls": true,

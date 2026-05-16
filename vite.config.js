@@ -16,6 +16,23 @@ export default defineConfig({
           __dirname,
           "src/pages/moviePage/moviePage.html",
         ),
+        "serialPage/serialPage": path.resolve(
+          __dirname,
+          "src/pages/serialPage/serialPage.html",
+        ),
+        "actor/actor": path.resolve(__dirname, "src/pages/actor/actor.html"),
+        "movies/movies": path.resolve(
+          __dirname,
+          "src/pages/movies/movies.html",
+        ),
+        "serial/serials": path.resolve(
+          __dirname,
+          "src/pages/serial/serials.html",
+        ),
+        "trends/trends": path.resolve(
+          __dirname,
+          "src/pages/trends/trends.html",
+        ),
       },
       output: {
         entryFileNames: "assets/[name].[hash].js",
