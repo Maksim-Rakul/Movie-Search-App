@@ -1,12 +1,18 @@
 {
   "rewrites": [
     {
-      "source": "/moviePage.html",
-      "destination": "/pages/moviePage/moviePage.html"
+      "source": "/moviePage",
+      "destination": "/moviePage/moviePage.html"
     },
     {
-      "source": "/moviePage",
-      "destination": "/pages/moviePage/moviePage.html"
+      "source": "/moviePage.html",
+      "destination": "/moviePage/moviePage.html"
+    },
+    {
+      "source": "/moviePage/:path*",
+      "destination": "/moviePage/moviePage.html"
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }

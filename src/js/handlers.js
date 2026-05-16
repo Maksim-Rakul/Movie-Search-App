@@ -176,7 +176,6 @@ export function banerMoreBtnHandler(event) {
   }
 
   const banerId = btn.closest(".hero__slide").dataset.banerid;
-  console.log(banerId);
 
   window.location.href = `/pages/moviePage/moviePage.html#id=${banerId}`;
 }

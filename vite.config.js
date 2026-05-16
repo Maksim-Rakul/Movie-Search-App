@@ -5,17 +5,22 @@ import injectHTML from "vite-plugin-html-inject";
 export default defineConfig({
   root: path.resolve(__dirname, "src"),
   publicDir: path.resolve(__dirname, "public"),
+  base: "./",
   build: {
-    outDir: "../dist",
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "src/index.html"),
-        // Додайте явно ваш moviePage.html
-        "pages/moviePage/moviePage": path.resolve(
+        "moviePage/moviePage": path.resolve(
           __dirname,
           "src/pages/moviePage/moviePage.html",
         ),
+      },
+      output: {
+        entryFileNames: "assets/[name].[hash].js",
+        chunkFileNames: "assets/[name].[hash].js",
+        assetFileNames: "assets/[name].[hash].[ext]",
       },
     },
   },
@@ -25,4 +30,7 @@ export default defineConfig({
       debug: { logPath: true },
     }),
   ],
+  server: {
+    historyApiFallback: true,
+  },
 });
