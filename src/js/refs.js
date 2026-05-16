@@ -22,6 +22,8 @@ export const moviesPageCategory = document.querySelector(
   ".movies-page__category",
 );
 
+
+// SERIALS PAGE
 export const serialsPageContainer = document.querySelector(
   ".serials-page__list",
 );

@@ -58,12 +58,15 @@ export function banerRender(arr) {
 }
 
 function movieSliderRenderStr(arr) {
+
+  console.log(arr);
+
   const renderStr = arr
     .map((item) => {
       const name = item.name ? "Serial" : "Movie";
 
       return `
-        <a href="#id=${item.id}" class="swiper-slide movie__slide" data-id="${item.id}">
+        <a href="#id=${item.id}" class="swiper-slide movie__slide" data-id="${item.id}" data-type="${name}">
                     <div class="movie__slide-img-wrap">
                       <img src="https://image.tmdb.org/t/p/original/${item.backdrop_path}" alt="${item.original_title || item.original_name}" />
 

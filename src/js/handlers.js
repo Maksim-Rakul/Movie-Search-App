@@ -70,9 +70,15 @@ export function movieClickHandler(event) {
     return;
   }
 
+  const type = movieSlide.dataset.type;
   const banerId = movieSlide.dataset.id;
 
-  window.location.href = `/pages/moviePage/moviePage.html#id=${banerId}`;
+  const href =
+    type === "Movie"
+      ? `/pages/moviePage/moviePage.html`
+      : `/pages/serialPage/serialPage.html`;
+
+  window.location.href = `${href}#id=${banerId}`;
 }
 
 export function changeTypeHandler(event) {

@@ -2,7 +2,7 @@ import { getTVByType } from "../../js/api";
 import { mobileMenu } from "../../js/helpers";
 import { renderSerialsPage } from "../../js/render";
 import * as refs from "../../js/refs.js";
-import { serialsPageHandle } from "../../js/handlers.js";
+import { movieClickHandler, serialsPageHandle } from "../../js/handlers.js";
 
 mobileMenu();
 
@@ -11,3 +11,4 @@ getTVByType().then((data) => {
 });
 
 refs.serialsPageCategory.addEventListener("click", serialsPageHandle);
+refs.serialsPageContainer.addEventListener("click", movieClickHandler);

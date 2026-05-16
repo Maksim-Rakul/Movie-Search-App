@@ -2,7 +2,11 @@ import { getByTrands } from "../../js/api";
 import { mobileMenu } from "../../js/helpers";
 import { renderTrendPage } from "../../js/render";
 import * as refs from "../../js/refs.js";
-import { trendCategoryHandler, trendTimeHandler } from "../../js/handlers.js";
+import {
+  movieClickHandler,
+  trendCategoryHandler,
+  trendTimeHandler,
+} from "../../js/handlers.js";
 
 mobileMenu();
 
@@ -17,3 +21,4 @@ getByTrands({}).then((data) => {
 
 refs.trendPageCategory.addEventListener("click", trendCategoryHandler);
 refs.trendPageTime.addEventListener("click", trendTimeHandler);
+refs.trendPageContainer.addEventListener("click", movieClickHandler);
