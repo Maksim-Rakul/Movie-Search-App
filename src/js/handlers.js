@@ -8,6 +8,7 @@ import {
   getPopularMovie,
   getPopularTV,
   getRatingTV,
+  getSeasonSerialById,
   getSoonMovie,
   getTopRatedMovie,
   getTVByGenres,
@@ -21,6 +22,7 @@ import {
   ganresRender,
   renderByGenres,
   renderMoviePage,
+  serialsEpisodRender,
 } from "./render.js";
 import { sliderInit } from "./sliderInit.js";
 
@@ -226,4 +228,37 @@ export function castClickHandler(event) {
   const actorId = actor.dataset.id;
 
   window.location.href = `/pages/actor/actor.html?id=${actorId}`;
+}
+
+export async function seasonClickHandler(event, serialId) {
+  Array.from(event.currentTarget.children).forEach((item) => {
+    item.classList.remove("active-btn");
+  });
+
+  const btn = event.target.classList.contains("season__btn");
+
+  if (!btn) return;
+
+  const seasonId = event.target.dataset.id;
+
+  const episodsArr = await getSeasonSerialById(serialId, seasonId);
+
+  serialsEpisodRender(episodsArr);
+
+  event.target.classList.add("active-btn");
+}
+
+export function episodClickHandler(event) {
+  const btn = event.target.closest(".season__episod-more-btn");
+
+  if (!btn) return;
+  const parent = btn.closest(".season__episod-item");
+
+  if (parent.classList.contains("open-episod")) {
+    btn.classList.remove("more-btn-open");
+    parent.classList.remove("open-episod");
+  } else {
+    btn.classList.add("more-btn-open");
+    parent.classList.add("open-episod");
+  }
 }

@@ -4,8 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actor</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="./actor.css" />
 </head>
 <body>
+    <load src="/partials/header.html" />
+
+    <main>
+        <section class="hero__actor">
+            <div class="container ">
+                <div class="hero__actor-wrap">
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="info__nav">
+            <div class="container">
+                <ul class="info__nav-list">
+                    <li class="info__nav-item info__nav-active" data-type="info">
+                    Movies
+                    </li>
+                    <li class="info__nav-item">Serials</li>
+                    <li class="info__nav-item" data-type="cast">Photo</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="info__wrap">
+            <section class="info">
+                <div class="container">
+                    <ul class="movies-page__list actor__movie-list"></ul>
+                </div>
+            </section>
+
+            <section class="serials hidden">
+            <div class="container">
+
+                <p>TV</p>
+                <ul class="serials-page__list actor__movie-list"></ul>
+            </div>
+            </section>
+
+
+
+
+            <section class="media hidden">
+            <div class="container">
+
+                <div class="media__wrap-list">
+              <h3 class="cast__title media__title">Gallery</h3>
+              <ul class="media__gallery-list"></ul>
+            </div>
+            </div>
+            </section>
+      </div>
+    </main>
+
     <script type="module" src="./actor.js"></script>
 </body>
 </html>

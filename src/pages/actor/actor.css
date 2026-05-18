@@ -1,0 +1,49 @@
+.hero__actor {
+    padding-top: 33px;
+    margin-bottom: 35px;
+}
+
+.actor__img {
+    max-width: 197px;
+    margin-bottom: 23px;
+}
+
+.actor__name {
+    font-size: 40px;
+    color: #fff;
+    font-family: "Cormorant Garamond", sans-serif;
+    margin-bottom: 18px;
+}
+
+.actor__tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 250px;
+    margin-bottom: 18px;
+}
+
+.actor__tag-item {
+    font-weight: 500;
+font-size: 12px;
+color: rgba(178, 178, 178, 0.7);
+}
+
+.actor__desc {
+    font-weight: 500;
+font-size: 13px;
+line-height: 1.53846;
+color: #b2b2b2;
+}
+
+.actor__movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 11px;
+    margin-bottom: 51px;
+}
+
+.actor__movie-list li {
+    flex-basis: calc((100% - 11px) / 2 );
+}

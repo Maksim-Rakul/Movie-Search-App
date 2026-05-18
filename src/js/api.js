@@ -131,23 +131,82 @@ export const getGalleryByMovieId = async (id) => {
 export const getSerialById = async (id) => {
   const res = await api.get(`/tv/${id}`);
 
-  return res.data
-}
+  return res.data;
+};
 
 export const getVideoSerialById = async (id) => {
   const res = await api.get(`/tv/${id}/videos`);
 
-  return res.data
-}
+  return res.data;
+};
 
 export const getCastSerialById = async (id) => {
   const res = await api.get(`/tv/${id}/credits`);
 
-  return res.data
-}
+  return res.data;
+};
 
 export const getRecSerialById = async (id) => {
   const res = await api.get(`/tv/${id}/recommendations`);
 
-  return res.data
-}
+  return res.data;
+};
+
+export const getSeasonSerialById = async (id, seasonId) => {
+  try {
+    const res = await api.get(`/tv/${id}/season/${seasonId}`);
+
+    return res.data;
+  } catch (err) {
+    if (err.response?.status !== 404) {
+      console.log(err.message);
+    }
+    return null;
+  }
+};
+
+export const getReviewsBySerialsId = async (id) => {
+  try {
+    const res = await api.get(`https://api.themoviedb.org/3/tv/${id}/reviews`);
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getImgBySerialId = async (id) => {
+  try {
+    const res = await api.get(`/tv/${id}/images`);
+
+    return res.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+// ACTOR
+
+export const getActorById = async (id) => {
+  const res = await api.get(`/person/${id}`);
+
+  return res.data;
+};
+
+export const getMoviesByActorId = async (id) => {
+  const res = await api.get(`/person/${id}/movie_credits`);
+
+  return res.data;
+};
+
+export const getSerialsByActorId = async (id) => {
+  const res = await api.get(`/person/${id}/tv_credits`);
+
+  return res.data;
+};
+
+export const getImgByActorId = async (id) => {
+  const res = await api.get(`/person/${id}/images`);
+
+  return res.data;
+};

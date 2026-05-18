@@ -26,25 +26,16 @@ import {
   movieClickHandler,
 } from "../../js/handlers.js";
 
-mobileMenu();
-castSliderInit();
-
-
-const url = new URLSearchParams(window.location.search);
-const id = url.get("id");
-
-
-const hero = document.querySelector(".hero");
-
-Promise.all([
-  getMovieById(id),
-  getVideoByMovieId(id),
-  getActorsByMovieId(id),
-  getRecByMovieId(id),
-  getReviewsByMovieId(id),
-  getGalleryByMovieId(id),
-]).then((data) => {
-  const [movieInfo, video, actor, recommend, reviews, gallery] = data;
+const initMoviePage = async () => {
+  const [movieInfo, video, actor, recommend, reviews, gallery] =
+    await Promise.all([
+      getMovieById(id),
+      getVideoByMovieId(id),
+      getActorsByMovieId(id),
+      getRecByMovieId(id),
+      getReviewsByMovieId(id),
+      getGalleryByMovieId(id),
+    ]);
 
   hero.style.background = `
     linear-gradient(
@@ -68,7 +59,7 @@ Promise.all([
   recommendRender(recommend.results);
   renderReviews(reviews.results);
   renderMediaVideo(video.results);
-  renderMediaGallery(gallery.backdrops.slice(0, 16));
+  renderMediaGallery(gallery.backdrops);
 
   refs.recommendContainer.addEventListener("click", movieClickHandler);
 
@@ -80,6 +71,14 @@ Promise.all([
     loop: true,
     autoplayVideos: true,
   });
-});
+};
 
+mobileMenu();
+castSliderInit();
+
+const url = new URLSearchParams(window.location.search);
+const id = url.get("id");
+const hero = document.querySelector(".hero");
+
+initMoviePage();
 refs.infoNav.addEventListener("click", infoNavHandler);

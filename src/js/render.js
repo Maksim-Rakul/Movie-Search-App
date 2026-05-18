@@ -64,14 +64,12 @@ export function banerRender(arr) {
 }
 
 function movieSliderRenderStr(arr) {
-  console.log(arr);
-
   const renderStr = arr
     .map((item) => {
       const name = item.name ? "Serial" : "Movie";
 
       return `
-        <div class="swiper-slide movie__slide" data-id="${item.id}" data-type="${name}">
+        <li class="swiper-slide movie__slide" data-id="${item.id}" data-type="${name}">
                     <div class="movie__slide-img-wrap">
                       <img src="https://image.tmdb.org/t/p/original/${item.backdrop_path}" alt="${item.original_title || item.original_name}" />
 
@@ -96,9 +94,16 @@ function movieSliderRenderStr(arr) {
 
                     <div class="movie__slide-content">
                       <h3 class="movie__slide-name">${item.original_title || item.original_name}</h3>
-                      <p class="movie__slide-date">${dateEdit(item.release_date || item.first_air_date)}</p>
+                      ${
+                        item.release_date || item.first_air_date
+                          ? `
+                        <p class="movie__slide-date">${dateEdit(item.release_date || item.first_air_date)}</p>
+                        `
+                          : ``
+                      }
+                      
                     </div>
-                  </div>
+                  </li>
         `;
     })
     .join("");
@@ -268,8 +273,6 @@ export function renderMoviePageById(
   refs.moviePageHero.innerHTML = renderStr;
 }
 
-//https:www.youtube.com/embed/${videoData.key}
-
 export function renderInfoCastsById(arr) {
   const renderStr = arr
     .map(({ id, profile_path, name, character }) => {
@@ -435,7 +438,7 @@ export function renderSerialPageById(
   }, 0);
 
   const renderStr = `
-    <img class="hero__movie-img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="" />
+    <img class="hero__movie-img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${overview}" />
           <ul class="hero__genres-list">
             ${genresStr}
           </ul>
@@ -475,8 +478,6 @@ export function renderSerialPageById(
             ${descEdit(overview)}
           </p>
 
-
-
           ${
             video
               ? `
@@ -492,4 +493,102 @@ export function renderSerialPageById(
   `;
 
   refs.serialsPageHero.innerHTML = renderStr;
+}
+
+export function serialsSeasonNavRender(arr) {
+  const renderStr = arr.seasons
+    .map((item, index) => {
+      return `
+       <button class="category__item season__btn" data-id="${item.season_number}">Season ${index + 1}</button>
+    `;
+    })
+    .join("");
+
+  refs.serialsEpisodNavContainer.innerHTML = renderStr;
+}
+
+export function serialsEpisodRender(arr) {
+  let renderStr;
+
+  renderStr = arr.episodes
+    .map(({ air_date, still_path, name, overview, vote_average }, index) => {
+      return `
+        <li class="season__episod-item">
+                  <div class="season__episod-wrap">
+                    <div class="season__episod-left">
+                      ${
+                        still_path
+                          ? `
+                        <img src="https://image.tmdb.org/t/p/original${still_path}" alt="#">  
+                        `
+                          : ``
+                      }
+                      
+                      <div class="season__episod-info">
+                        <h3 class="season__episod-name">Episod ${index + 1}:${name}</h3>
+                        ${
+                          air_date
+                            ? `
+                          <p class="season__episod-time">${air_date}</p> 
+                          `
+                            : ``
+                        }
+                        
+                      </div>
+                    </div>
+                    <div class="season__episod-right">
+                    ${
+                      vote_average
+                        ? `
+                          <div class="season__episod-rate">
+                            <div class="hero__rate-wrap season__episod-rate">
+                              <svg class="hero__rate-icon">
+                                <use href="/sprites.svg#icon-star"></use>
+                              </svg>
+                              <p class="hero__rate-text">
+                                <span class="rate-color">${Number(vote_average.toFixed(1))}</span>
+                              </p>
+                            </div>
+                          </div>
+                          `
+                        : ``
+                    }
+                      
+                      <button  class="season__episod-more-btn">
+                        <svg class="season__episod-more-icon">
+                          <use href="/sprites.svg#icon-slider_btn"></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <p class="season__episod-desc">${overview}</p>
+                </li>
+        
+        `;
+    })
+    .join("");
+
+  refs.serialsEpisodContainer.innerHTML = renderStr;
+}
+
+export function renderActor({
+  profile_path,
+  name,
+  known_for_department,
+  birthday,
+  place_of_birth,
+  boigraphy,
+}) {
+  refs.heroActorContainer.innerHTML = `
+  <img class="actor__img" src="https://image.tmdb.org/t/p/original${profile_path}" alt="">
+  <h1 class="actor__name">${name}</h1>
+  <ul class="actor__tag-list">
+    <li class="actor__tag-item">🎭 ${known_for_department}</li>
+    <li class="actor__tag-item">📅 ${birthday}</li>
+    <li class="actor__tag-item">📍 ${place_of_birth}</li>
+  </ul>
+
+  ${boigraphy ? `<p class="actor__desc">${boigraphy}</p>   ` : ``}        
+  `;
 }

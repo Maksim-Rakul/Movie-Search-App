@@ -22,7 +22,6 @@ export const moviesPageCategory = document.querySelector(
   ".movies-page__category",
 );
 
-
 // SERIALS PAGE
 export const serialsPageContainer = document.querySelector(
   ".serials-page__list",
@@ -60,3 +59,13 @@ export const mediaGalleryContainer = document.querySelector(
 // SERIALS
 
 export const serialsPageHero = document.querySelector(".js-hero-tv-content");
+export const serialsEpisodNavContainer =
+  document.querySelector(".seasons-btn-wrap");
+export const serialsEpisodContainer = document.querySelector(
+  ".season__episod-list",
+);
+export const seasonCount = document.querySelector(".season-count");
+
+// ACTOR
+
+export const heroActorContainer = document.querySelector(".hero__actor-wrap");
