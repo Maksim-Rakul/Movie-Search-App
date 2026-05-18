@@ -130,7 +130,7 @@ export function allMovieListRender(arr) {
   const renderStr = arr
     .map((item) => {
       return `
-      <li class="movies__item">
+      <div class="movies__item">
                 <h2 class="movies__list-title">${item.type}</h2>
                 <div class="swiper movies__cinema">
                   <div class="swiper-wrapper js-in-cinema">
@@ -151,7 +151,7 @@ export function allMovieListRender(arr) {
                     </svg>
                   </div>
                 </div>
-              </li>
+              </div>
       `;
     })
     .join("");
@@ -300,14 +300,15 @@ export function recommendRender(arr) {
 }
 
 export function renderCastsById(arr) {
+  console.log(arr);
   const renderStr = arr
-    .map(({ cast_id, profile_path, name, character }) => {
+    .map(({ id, profile_path, name, character }) => {
       const actorImg = profile_path
         ? `https://image.tmdb.org/t/p/original${profile_path}`
         : `/actor.png`;
 
       return `
-      <li class="cast__slider-item swiper-slide" data-id="${cast_id}">
+      <li class="cast__slider-item swiper-slide" data-id="${id}">
         <a href="#" class="cast__slider-link">
           <img src="${actorImg}" alt="" class="cast__slider-img" />
           <p class="cast__slider-name">${name}</p>

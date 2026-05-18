@@ -22,7 +22,6 @@ import {
 mobileMenu();
 banerSliderInit();
 
-// GANRES
 getMovieGanres()
   .then((data) => {
     ganresRender(data.genres);
@@ -34,7 +33,6 @@ getMovieGanres()
     console.log(error);
   });
 
-// BANER MOVIES
 getBanerMovies()
   .then((data) => {
     const banerArr = data.res.results.slice(0, 5);
@@ -46,10 +44,10 @@ getBanerMovies()
   });
 
 Promise.all([
-  getBanerMovies(), //baner
-  getPopularMovie(), //popular
-  getTopRatedMovie(), //rated
-  getSoonMovie(), // upcoming
+  getBanerMovies(),
+  getPopularMovie(),
+  getTopRatedMovie(),
+  getSoonMovie(),
   getPopularTV(),
   getRatingTV(),
 ]).then((data) => {

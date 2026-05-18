@@ -48,6 +48,7 @@ export function sliderInit() {
       prevEl: ".movie_slide-prev",
       addIcons: true,
     },
+    spaceBetween: 11,
 
     slidesPerView: 2,
     breakpoints: {
@@ -59,7 +60,6 @@ export function sliderInit() {
       },
       1024: {
         slidesPerView: 2,
-        spaceBetween: 11,
       },
     },
   });
