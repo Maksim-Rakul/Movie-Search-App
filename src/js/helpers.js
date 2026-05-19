@@ -43,3 +43,11 @@ export function descEdit(desc) {
   const descArr = desc.split(".");
   return descArr.slice(0, 2).join(".");
 }
+
+export function showLoader() {
+  refs.loader.classList.add("is-vissible");
+}
+
+export function hideLoader() {
+  refs.loader.classList.remove("is-vissible");
+}

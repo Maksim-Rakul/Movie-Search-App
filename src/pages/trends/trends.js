@@ -1,5 +1,5 @@
 import { getByTrands } from "../../js/api";
-import { mobileMenu } from "../../js/helpers";
+import { hideLoader, mobileMenu, showLoader } from "../../js/helpers";
 import { renderTrendPage } from "../../js/render";
 import * as refs from "../../js/refs.js";
 import {
@@ -7,18 +7,25 @@ import {
   trendCategoryHandler,
   trendTimeHandler,
 } from "../../js/handlers.js";
+import search from "../../js/search.js";
 
 mobileMenu();
-
-// let trandRequestParams = {
-//   type: "all",
-//   time: "day",
-// };
-
-getByTrands({}).then((data) => {
-  renderTrendPage(data.results);
-});
+search();
+showLoader();
 
 refs.trendPageCategory.addEventListener("click", trendCategoryHandler);
 refs.trendPageTime.addEventListener("click", trendTimeHandler);
-refs.trendPageContainer.addEventListener("click", movieClickHandler);
+
+getByTrands({})
+  .then((data) => {
+    renderTrendPage(data.results);
+
+    refs.trendPageContainer.addEventListener("click", movieClickHandler);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+  .finally(() => {
+    hideLoader();
+  });
+

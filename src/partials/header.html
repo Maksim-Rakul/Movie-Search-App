@@ -5,9 +5,17 @@
                 <a href="/" class="header__logo">
                     <img src="/movie.svg" alt="Logo" class="header__logo-icon">
                 </a>
-                <form class="header__form">
-                    <input class="header__form-input" type="text" name="search" aria-label="Search movie">
-                </form>
+                <div class="header__from-wrap">
+                    <form class="header__form">
+                        <input class="header__form-input" type="text" name="search" aria-label="Search movie">
+                    </form>
+
+                    <button class="header__form-clear">
+                        <svg class="header__form-clear-icon">
+                            <use href="/sprites.svg#icon-close_menu"></use>
+                        </svg>
+                    </button>
+                </div>
                 <button class="header__menu js-menu-btn">
                     <svg class="header__menu-icon">
                         <use href="/sprites.svg#icon-open_menu"></use>
@@ -15,6 +23,12 @@
                 </button>
             </nav>
         
+            <div class="header__search">
+                <div class="header__search-backdrop">
+                    <ul class="header__search-list">
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="header__mobile-menu js-mobile">
                 <ul class="header__mobile-list">
@@ -50,6 +64,8 @@
                     </li>
                 </ul>
             </div>
+
+            
     </div>
 
 </header>

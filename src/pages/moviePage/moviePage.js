@@ -6,7 +6,7 @@ import {
   getReviewsByMovieId,
   getVideoByMovieId,
 } from "../../js/api";
-import { mobileMenu } from "../../js/helpers";
+import { hideLoader, mobileMenu, showLoader } from "../../js/helpers";
 import {
   recommendRender,
   renderCastsById,
@@ -25,19 +25,33 @@ import {
   infoNavHandler,
   movieClickHandler,
 } from "../../js/handlers.js";
+import search from "../../js/search.js";
 
-const initMoviePage = async () => {
-  const [movieInfo, video, actor, recommend, reviews, gallery] =
-    await Promise.all([
-      getMovieById(id),
-      getVideoByMovieId(id),
-      getActorsByMovieId(id),
-      getRecByMovieId(id),
-      getReviewsByMovieId(id),
-      getGalleryByMovieId(id),
-    ]);
+const url = new URLSearchParams(window.location.search);
+const id = url.get("id");
+const hero = document.querySelector(".hero");
 
-  hero.style.background = `
+mobileMenu();
+castSliderInit();
+search();
+initMoviePage();
+showLoader();
+
+refs.infoNav.addEventListener("click", infoNavHandler);
+
+async function initMoviePage() {
+  try {
+    const [movieInfo, video, actor, recommend, reviews, gallery] =
+      await Promise.all([
+        getMovieById(id),
+        getVideoByMovieId(id),
+        getActorsByMovieId(id),
+        getRecByMovieId(id),
+        getReviewsByMovieId(id),
+        getGalleryByMovieId(id),
+      ]);
+
+    hero.style.background = `
     linear-gradient(
         0deg,
         rgba(10, 10, 10, 1) 30%,
@@ -45,40 +59,35 @@ const initMoviePage = async () => {
     ),
     url(https://image.tmdb.org/t/p/original/${movieInfo.backdrop_path})
   `;
-  hero.style.backgroundSize = "cover";
-  hero.style.backgroundPosition = "center";
-  hero.style.backgroundRepeat = "no-repeat";
+    hero.style.backgroundSize = "cover";
+    hero.style.backgroundPosition = "center";
+    hero.style.backgroundRepeat = "no-repeat";
 
-  const trailer = video.results.find((item) => {
-    return item.type === "Trailer";
-  });
+    const trailer = video.results.find((item) => {
+      return item.type === "Trailer";
+    });
 
-  renderMoviePageById(movieInfo, trailer);
-  renderInfoCastsById(actor.cast);
-  renderCastsById(actor.cast);
-  recommendRender(recommend.results);
-  renderReviews(reviews.results);
-  renderMediaVideo(video.results);
-  renderMediaGallery(gallery.backdrops);
+    renderMoviePageById(movieInfo, trailer);
+    renderInfoCastsById(actor.cast);
+    renderCastsById(actor.cast);
+    recommendRender(recommend.results);
+    renderReviews(reviews.results);
+    renderMediaVideo(video.results);
+    renderMediaGallery(gallery.backdrops);
 
-  refs.recommendContainer.addEventListener("click", movieClickHandler);
+    refs.recommendContainer.addEventListener("click", movieClickHandler);
+    refs.infoCastContainer.addEventListener("click", castClickHandler);
+    refs.castContainer.addEventListener("click", castClickHandler);
 
-  refs.infoCastContainer.addEventListener("click", castClickHandler);
-  refs.castContainer.addEventListener("click", castClickHandler);
-
-  const lightbox = GLightbox({
-    touchNavigation: true,
-    loop: true,
-    autoplayVideos: true,
-  });
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true,
+    });
+  } catch (err) {
+    console.log(err.message);
+  } finally {
+    hideLoader();
+  }
 };
 
-mobileMenu();
-castSliderInit();
-
-const url = new URLSearchParams(window.location.search);
-const id = url.get("id");
-const hero = document.querySelector(".hero");
-
-initMoviePage();
-refs.infoNav.addEventListener("click", infoNavHandler);

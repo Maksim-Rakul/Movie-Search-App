@@ -1,14 +1,25 @@
 import { getMoviesByType } from "../../js/api";
-import { mobileMenu } from "../../js/helpers";
+import { hideLoader, mobileMenu, showLoader } from "../../js/helpers";
 import { renderMoviePage } from "../../js/render.js";
 import * as refs from "../../js/refs.js";
 import { movieClickHandler, moviePageHandle } from "../../js/handlers.js";
+import search from "../../js/search.js";
 
 mobileMenu();
-
-getMoviesByType().then((data) => {
-  renderMoviePage(data.results);
-});
+search();
+showLoader();
 
 refs.moviesPageCategory.addEventListener("click", moviePageHandle);
-refs.moviesPageContainer.addEventListener("click", movieClickHandler);
+
+getMoviesByType()
+  .then((data) => {
+    renderMoviePage(data.results);
+
+    refs.moviesPageContainer.addEventListener("click", movieClickHandler);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+  .finally(() => {
+    hideLoader();
+  });

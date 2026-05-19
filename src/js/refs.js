@@ -1,4 +1,16 @@
 export const mobileMenu = document.querySelector(".js-mobile");
+export const loader = document.querySelector('.loader')
+export const headerInput = document.querySelector(".header__form-input");
+export const headerInputClear = document.querySelector(".header__form-clear");
+export const headerSearchContainer = document.querySelector(
+  ".header__search-list",
+);
+
+export const headerSearch = document.querySelector(".header__search");
+export const headerSearchBackdrop = document.querySelector(
+  ".header__search-backdrop",
+);
+
 export const mobileMenuBtn = document.querySelector(".js-menu-btn");
 export const banerContainer = document.querySelector(".js-banner-container");
 export const inCinemaContainer = document.querySelector(".js-in-cinema");

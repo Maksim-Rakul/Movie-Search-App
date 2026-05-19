@@ -1,6 +1,7 @@
 import Swiper from "swiper";
 import {
   getBanerMovies,
+  getKeyword,
   getMovieGanres,
   getPopularMovie,
   getPopularTV,
@@ -8,9 +9,14 @@ import {
   getSoonMovie,
   getTopRatedMovie,
 } from "./api.js";
-import { mobileMenu } from "./helpers.js";
+import { hideLoader, mobileMenu, showLoader } from "./helpers.js";
 import * as refs from "./refs.js";
-import { allMovieListRender, banerRender, ganresRender } from "./render.js";
+import {
+  allMovieListRender,
+  banerRender,
+  ganresRender,
+  renderSearch,
+} from "./render.js";
 import { banerSliderInit, sliderInit } from "./sliderInit.js";
 import {
   banerMoreBtnHandler,
@@ -18,41 +24,46 @@ import {
   changeTypeHandler,
   movieClickHandler,
 } from "./handlers.js";
+import { createSearchOptimizer } from "search-optimizer";
+import search from "./search.js";
 
 mobileMenu();
 banerSliderInit();
+search();
+showLoader();
+initPage();
 
-getMovieGanres()
-  .then((data) => {
-    ganresRender(data.genres);
+async function initPage() {
+  try {
+    const [baner, genres, list] = await Promise.all([
+      getBanerMovies(),
+      getMovieGanres(),
+      Promise.all([
+        getBanerMovies(),
+        getPopularMovie(),
+        getTopRatedMovie(),
+        getSoonMovie(),
+        getPopularTV(),
+        getRatingTV(),
+      ]),
+    ]);
 
+    const banerArr = baner.res.results.slice(0, 5);
+
+    banerRender(banerArr);
+    ganresRender(genres.genres);
+    allMovieListRender(list);
+
+    refs.banerContainer.addEventListener("click", banerMoreBtnHandler);
     refs.ganresContainer.addEventListener("click", changeGanreHandler);
     refs.categoryType.addEventListener("click", changeTypeHandler);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+    refs.allMoviesContainer.addEventListener("click", movieClickHandler);
 
-getBanerMovies()
-  .then((data) => {
-    const banerArr = data.res.results.slice(0, 5);
-    banerRender(banerArr);
-    refs.banerContainer.addEventListener("click", banerMoreBtnHandler);
-  })
-  .catch((error) => {
-    console.log(error.message);
-  });
+    sliderInit();
+  } catch (err) {
+    console.log(err.message);
+  } finally {
+    hideLoader();
+  }
+}
 
-Promise.all([
-  getBanerMovies(),
-  getPopularMovie(),
-  getTopRatedMovie(),
-  getSoonMovie(),
-  getPopularTV(),
-  getRatingTV(),
-]).then((data) => {
-  allMovieListRender(data);
-  sliderInit();
-});
-
-refs.allMoviesContainer.addEventListener("click", movieClickHandler);

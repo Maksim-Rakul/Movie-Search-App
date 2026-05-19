@@ -8,6 +8,22 @@ import {
 import * as refs from "./refs.js";
 import { banerSliderInit, sliderInit } from "./sliderInit.js";
 
+export function renderSearch(arr) {
+  const renderStr = arr
+    .map((item) => {
+      const name = item.name ? "Serial" : "Movie";
+      return `
+    <li class="header__search-item movie__slide" data-id="${item.id}" data-type="${name}">
+        <img class="header__search-img" src="https://image.tmdb.org/t/p/original/${item.poster_path}" alt="">
+        <p class="header__search-name">${item.original_title}</p>
+    </li>
+    `;
+    })
+    .join("");
+
+  refs.headerSearchContainer.innerHTML = renderStr;
+}
+
 export function banerRender(arr) {
   const renderString = arr
     .map(({ id, original_title, overview, poster_path, vote_average }) => {
@@ -300,7 +316,6 @@ export function recommendRender(arr) {
 }
 
 export function renderCastsById(arr) {
-  console.log(arr);
   const renderStr = arr
     .map(({ id, profile_path, name, character }) => {
       const actorImg = profile_path

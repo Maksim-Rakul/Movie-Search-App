@@ -8,7 +8,7 @@ import {
   getReviewsBySerialsId,
   getImgBySerialId,
 } from "../../js/api";
-import { mobileMenu } from "../../js/helpers";
+import { hideLoader, mobileMenu, showLoader } from "../../js/helpers";
 import {
   recommendRender,
   renderCastsById,
@@ -29,32 +29,39 @@ import {
   seasonClickHandler,
 } from "../../js/handlers.js";
 import { castSliderInit } from "../../js/sliderInit.js";
-
-mobileMenu();
-castSliderInit();
+import search from "../../js/search.js";
 
 const url = new URLSearchParams(window.location.search);
 const id = url.get("id");
 const hero = document.querySelector(".hero");
 
-const initPage = async () => {
-  const [serialInfo, video, actor, recommend, reviews, images] =
-    await Promise.all([
-      getSerialById(id),
-      getVideoSerialById(id),
-      getCastSerialById(id),
-      getRecSerialById(id),
-      getReviewsBySerialsId(id),
-      getImgBySerialId(id),
-    ]);
+mobileMenu();
+castSliderInit();
+initPage();
+search();
+showLoader();
 
-  const trailer = video.results.find((item) => {
-    return item.type === "Trailer";
-  });
+refs.infoNav.addEventListener("click", infoNavHandler);
 
-  const firstSeason = serialInfo.seasons[0].season_number;
+async function initPage() {
+  try {
+    const [serialInfo, video, actor, recommend, reviews, images] =
+      await Promise.all([
+        getSerialById(id),
+        getVideoSerialById(id),
+        getCastSerialById(id),
+        getRecSerialById(id),
+        getReviewsBySerialsId(id),
+        getImgBySerialId(id),
+      ]);
 
-  hero.style.background = `
+    const trailer = video.results.find((item) => {
+      return item.type === "Trailer";
+    });
+
+    const firstSeason = serialInfo.seasons[0].season_number;
+
+    hero.style.background = `
     linear-gradient(
         0deg,
         rgba(10, 10, 10, 1) 30%,
@@ -62,38 +69,42 @@ const initPage = async () => {
     ),
     url(https://image.tmdb.org/t/p/original/${serialInfo.backdrop_path})
   `;
-  hero.style.backgroundSize = "cover";
-  hero.style.backgroundPosition = "center";
-  hero.style.backgroundRepeat = "no-repeat";
+    hero.style.backgroundSize = "cover";
+    hero.style.backgroundPosition = "center";
+    hero.style.backgroundRepeat = "no-repeat";
 
-  renderSerialPageById(serialInfo, trailer);
-  renderInfoCastsById(actor.cast);
-  renderCastsById(actor.cast);
-  recommendRender(recommend.results);
-  renderReviews(reviews.results);
-  renderMediaVideo(video.results);
-  renderMediaGallery(images.backdrops.slice(0, 16));
+    renderSerialPageById(serialInfo, trailer);
+    renderInfoCastsById(actor.cast);
+    renderCastsById(actor.cast);
+    recommendRender(recommend.results);
+    renderReviews(reviews.results);
+    renderMediaVideo(video.results);
+    renderMediaGallery(images.backdrops.slice(0, 16));
 
-  const seasonData = await getSeasonSerialById(id, firstSeason);
-  serialsEpisodRender(seasonData);
-  serialsSeasonNavRender(serialInfo);
-  refs.serialsEpisodNavContainer.children[0].classList.add("active-btn");
+    const seasonData = await getSeasonSerialById(id, firstSeason);
+    serialsEpisodRender(seasonData);
+    serialsSeasonNavRender(serialInfo);
+    refs.serialsEpisodNavContainer.children[0].classList.add("active-btn");
 
-  refs.recommendContainer.addEventListener("click", movieClickHandler);
-  refs.infoCastContainer.addEventListener("click", castClickHandler);
-  refs.castContainer.addEventListener("click", castClickHandler);
-  refs.serialsEpisodContainer.addEventListener("click", episodClickHandler);
-  refs.serialsEpisodNavContainer.addEventListener("click", (event) => {
-    seasonClickHandler(event, id);
-  });
-  refs.seasonCount.textContent = serialInfo.seasons.length;
+    refs.recommendContainer.addEventListener("click", movieClickHandler);
+    refs.infoCastContainer.addEventListener("click", castClickHandler);
+    refs.castContainer.addEventListener("click", castClickHandler);
+    refs.serialsEpisodContainer.addEventListener("click", episodClickHandler);
+    refs.serialsEpisodNavContainer.addEventListener("click", (event) => {
+      seasonClickHandler(event, id);
+    });
+    refs.seasonCount.textContent = serialInfo.seasons.length;
 
-  const lightbox = GLightbox({
-    touchNavigation: true,
-    loop: true,
-    autoplayVideos: true,
-  });
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true,
+    });
+  } catch (err) {
+    console.log(err.message);
+  } finally {
+    hideLoader();
+  }
 };
 
-initPage();
-refs.infoNav.addEventListener("click", infoNavHandler);
+

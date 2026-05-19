@@ -65,6 +65,7 @@ export function changeGanreHandler(event) {
   }
 }
 
+
 export function changeTypeHandler(event) {
   if (event.target.classList.contains("category__type")) {
     return;

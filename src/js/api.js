@@ -1,4 +1,5 @@
 import axios from "axios";
+import { createGenericExecutor } from "search-optimizer";
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3",
@@ -210,3 +211,18 @@ export const getImgByActorId = async (id) => {
 
   return res.data;
 };
+
+
+export const getKeyword = createGenericExecutor(
+  async (name = "bat", signal) => {
+    const res = await api.get(`/search/movie`, {
+      params: {
+        query: name,
+        search_type: "ngram",
+      },
+      signal,
+    });
+
+    return res.data;
+  },
+);
