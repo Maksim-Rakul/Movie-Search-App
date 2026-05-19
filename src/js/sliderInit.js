@@ -6,32 +6,24 @@ export function banerSliderInit() {
     const swiper = new Swiper(".hero__swiper", {
       autoplay: {
         delay: 6000,
+        disableOnInteraction: false, // продовжувати автоплей після взаємодії
       },
       direction: "horizontal",
       loop: true,
 
-      pagination: {
-        el: ".swiper-pagination",
-        type: "bullets",
-        clickable: true,
-        bulletClass: "bullet",
-        bulletActiveClass: "active-bullet",
+      navigation: {
+        nextEl: ".hero_slide-next",
+        prevEl: ".hero_slide-prev",
+        addIcons: true,
       },
 
       speed: 700,
-
       slidesPerView: 1,
-      breakpoints: {
-        640: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 1,
-        },
-        1024: {
-          slidesPerView: 1,
-        },
-      },
+    });
+    swiper.on("init", function () {
+      this.pagination.init();
+      this.pagination.render();
+      this.pagination.update();
     });
   });
 }

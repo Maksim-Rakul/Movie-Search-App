@@ -1,0 +1,20 @@
+# robots.txt for Movie Search App
+User-agent: *
+Allow: /
+
+# Disable scanning of service folders
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /partials/
+
+
+# Disable API routes
+Disallow: /api/
+Disallow: /@vite/
+
+# Prevent duplicate content
+Disallow: /?*
+Disallow: /*?utm_
+
+# Sitemap location
+Sitemap: https://your-domain.com/sitemap.xml

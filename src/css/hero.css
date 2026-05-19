@@ -1,3 +1,7 @@
+.hero {
+  position: relative;
+}
+
 .hero__swiper {
   margin: 0 auto;
   max-width: 375px;
@@ -49,6 +53,8 @@
   color: #fff;
 }
 
+
+
 /*  */
 
 .swiper__content-wrap {
@@ -56,7 +62,6 @@
 }
 
 .hero_slide-content {
-  padding-bottom: 50px;
 }
 
 .hero_slide-rate-wrap {    
@@ -145,6 +150,31 @@
   stroke: #fff;
 }
 
+
 .swiper-pagination {
-  bottom: 30px;
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.hero__slider-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;left: 0;
+  transform: translateY(-50%);
+  z-index: 1000;
+  width: 100%;
+  height: 200px;
+  
+}
+
+.hero-btn {
+  background-color: transparent;
+  fill: transparent;
+  height: 200px;
+  display: flex;
+  align-items: center;
 }

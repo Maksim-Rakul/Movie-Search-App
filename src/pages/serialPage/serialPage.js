@@ -67,7 +67,7 @@ async function initPage() {
         rgba(10, 10, 10, 1) 30%,
         rgba(0, 0, 0, 0.089) 70%
     ),
-    url(https://image.tmdb.org/t/p/original/${serialInfo.backdrop_path})
+    url(https://image.tmdb.org/t/p/w1280/${serialInfo.backdrop_path})
   `;
     hero.style.backgroundSize = "cover";
     hero.style.backgroundPosition = "center";

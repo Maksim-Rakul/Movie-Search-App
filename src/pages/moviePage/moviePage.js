@@ -44,11 +44,11 @@ async function initMoviePage() {
     const [movieInfo, video, actor, recommend, reviews, gallery] =
       await Promise.all([
         getMovieById(id),
-        getVideoByMovieId(id),
-        getActorsByMovieId(id),
-        getRecByMovieId(id),
-        getReviewsByMovieId(id),
-        getGalleryByMovieId(id),
+        getVideoByMovieId(id, "videos"),
+        getActorsByMovieId(id, "credits"),
+        getRecByMovieId(id, "recommendations"),
+        getReviewsByMovieId(id, "reviews"),
+        getGalleryByMovieId(id, "images"),
       ]);
 
     hero.style.background = `
@@ -57,7 +57,7 @@ async function initMoviePage() {
         rgba(10, 10, 10, 1) 30%,
         rgba(0, 0, 0, 0.089) 70%
     ),
-    url(https://image.tmdb.org/t/p/original/${movieInfo.backdrop_path})
+    url(https://image.tmdb.org/t/p/w1280/${movieInfo.backdrop_path})
   `;
     hero.style.backgroundSize = "cover";
     hero.style.backgroundPosition = "center";

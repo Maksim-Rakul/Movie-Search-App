@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Movie Search App — search for movies and TV series by genre. View popular movies, trailers, and detailed information about your favorite films. Convenient catalog with the latest news from the film industry." />
     <title>Movie Search App</title>
 
     <!-- modern-normalize -->
@@ -44,7 +45,18 @@
         <div class="swiper hero__swiper">
           <div class="swiper-wrapper js-banner-container"></div>
 
-          <div class="swiper-pagination"></div>
+          <div class="hero__slider-nav">
+            <div class="hero_slide-prev hero-btn">
+              <svg class="movie_slide-prev-icon">
+                <use href="sprites.svg#icon-slider_btn"></use>
+              </svg>
+            </div>
+            <div class="hero_slide-next hero-btn">
+              <svg class="movie_slide-prev-icon">
+                  <use href="next.svg#icon-next"></use>
+              </svg>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -62,13 +74,16 @@
           <div class="category__ganres">
             <ul class="category__list js-ganres-list"></ul>
           </div>
+
+          
+
         </div>
       </section>
 
       <!-- MOVIES -->
       <section class="movies">
         <div class="container">
-          <ul class="movies__list"></ul>
+          <div class="movies__list"></div>
         </div>
       </section>
     </main>

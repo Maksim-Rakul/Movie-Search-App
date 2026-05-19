@@ -3,7 +3,6 @@
   margin: 0 auto;
   background-size: cover;
   height: calc(100vh - 46px);
-  margin-bottom: 50px;
 }
 
 .hero__content-wrap {
@@ -146,6 +145,7 @@
 }
 
 .info__nav-list {
+  margin-top: 30px;
   display: flex;
   border-bottom: 1px solid rgba(178, 178, 178, 0.4);
   gap: 21px;

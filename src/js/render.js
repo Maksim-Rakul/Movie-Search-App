@@ -14,7 +14,7 @@ export function renderSearch(arr) {
       const name = item.name ? "Serial" : "Movie";
       return `
     <li class="header__search-item movie__slide" data-id="${item.id}" data-type="${name}">
-        <img class="header__search-img" src="https://image.tmdb.org/t/p/original/${item.poster_path}" alt="">
+        <img class="header__search-img" src="https://image.tmdb.org/t/p/w154/${item.poster_path}" alt="">
         <p class="header__search-name">${item.original_title}</p>
     </li>
     `;
@@ -26,15 +26,15 @@ export function renderSearch(arr) {
 
 export function banerRender(arr) {
   const renderString = arr
-    .map(({ id, original_title, overview, poster_path, vote_average }) => {
+    .map(({ id, original_title, overview, backdrop_path, vote_average }) => {
       return `
     <div class="swiper-slide hero__slide" data-banerID="${id}">
               <div class="hero__slide-container">
                 <div class="hero__slider-img-wrap">
                   <img
                     class="hero__slider-img"
-                    src="https://image.tmdb.org/t/p/original/${poster_path}"
-                    alt="Batman"
+                    src="https://image.tmdb.org/t/p/w1280/${backdrop_path}"
+                    alt="${overview}"
                   />
                 </div>
 
@@ -55,7 +55,7 @@ export function banerRender(arr) {
                     </p>
 
                     <div class="hero__slide-btns-wrap">
-                      <button class="hero__slide-btn">
+                      <button class="hero__slide-btn js-more-btn" >
                         <svg class="hero__slide-btn-icon">
                           <use href="sprites.svg#icon-play"></use>
                         </svg>
@@ -87,7 +87,7 @@ function movieSliderRenderStr(arr) {
       return `
         <li class="swiper-slide movie__slide" data-id="${item.id}" data-type="${name}">
                     <div class="movie__slide-img-wrap">
-                      <img src="https://image.tmdb.org/t/p/original/${item.backdrop_path}" alt="${item.original_title || item.original_name}" />
+                      <img src="https://image.tmdb.org/t/p/w300/${item.backdrop_path}" alt="${item.original_title || item.original_name}" />
 
                       <div class="movie__slide-info">
                         <div class="movie__slide-info-wrap">
@@ -156,7 +156,6 @@ export function allMovieListRender(arr) {
                   <div class="movie_slide-prev movie__slide-btn">
                     <svg class="movie_slide-prev-icon">
                       <use href="sprites.svg#icon-slider_btn">
-
                       </use>
                     </svg>
                   </div>
@@ -216,7 +215,7 @@ export function renderMoviePageById(
     .join("");
 
   const renderStr = `
-    <img class="hero__movie-img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="" />
+    <img class="hero__movie-img" src="https://image.tmdb.org/t/p/w185${poster_path}" alt="${overview}" />
           <ul class="hero__genres-list">
             ${genresStr}
           </ul>
@@ -293,13 +292,13 @@ export function renderInfoCastsById(arr) {
   const renderStr = arr
     .map(({ id, profile_path, name, character }) => {
       const actorImg = profile_path
-        ? `https://image.tmdb.org/t/p/original${profile_path}`
+        ? `https://image.tmdb.org/t/p/w185${profile_path}`
         : `/actor.png`;
 
       return `
       <li class="cast__slider-item swiper-slide" data-id="${id}">
         <div href="#" class="cast__slider-link">
-          <img src="${actorImg}" alt="" class="cast__slider-img" />
+          <img src="${actorImg}" alt="${name}" class="cast__slider-img" />
           <p class="cast__slider-name">${name}</p>
           <p class="cast__slider-role">${character}</p>
         </div>
@@ -319,13 +318,13 @@ export function renderCastsById(arr) {
   const renderStr = arr
     .map(({ id, profile_path, name, character }) => {
       const actorImg = profile_path
-        ? `https://image.tmdb.org/t/p/original${profile_path}`
+        ? `https://image.tmdb.org/t/p/w185${profile_path}`
         : `/actor.png`;
 
       return `
       <li class="cast__slider-item swiper-slide" data-id="${id}">
         <a href="#" class="cast__slider-link">
-          <img src="${actorImg}" alt="" class="cast__slider-img" />
+          <img src="${actorImg}" alt="${name}" class="cast__slider-img" />
           <p class="cast__slider-name">${name}</p>
           <p class="cast__slider-role">${character}</p>
         </a>
@@ -397,12 +396,13 @@ export function renderMediaVideo(arr) {
     .map(({ key }) => {
       return `
       <li class="media__video-item">
-                  <iframe
-                    class="media__video-frame"
-                    src="https://www.youtube.com/embed/${key}"
-                    frameborder="0"
-                  ></iframe>
-                </li>
+        <iframe
+            class="media__video-frame"
+            src="https://www.youtube.com/embed/${key}"
+            frameborder="0"
+          >
+        </iframe>
+      </li>
     `;
     })
     .join("");
@@ -415,7 +415,7 @@ export function renderMediaGallery(arr) {
     .map(({ file_path }) => {
       return `
       <li class="media__gallery-item">
-        <img src="https://image.tmdb.org/t/p/original/${file_path}" alt="" />
+        <img src="https://image.tmdb.org/t/p/original${file_path}" alt="" />
       </li>
     `;
     })
@@ -454,7 +454,7 @@ export function renderSerialPageById(
   }, 0);
 
   const renderStr = `
-    <img class="hero__movie-img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${overview}" />
+    <img class="hero__movie-img" src="https://image.tmdb.org/t/p/w185${poster_path}" alt="${overview}" />
           <ul class="hero__genres-list">
             ${genresStr}
           </ul>
@@ -597,7 +597,7 @@ export function renderActor({
   boigraphy,
 }) {
   refs.heroActorContainer.innerHTML = `
-  <img class="actor__img" src="https://image.tmdb.org/t/p/original${profile_path}" alt="">
+  <img class="actor__img" src="https://image.tmdb.org/t/p/w185${profile_path}" alt="${name}">
   <h1 class="actor__name">${name}</h1>
   <ul class="actor__tag-list">
     <li class="actor__tag-item">🎭 ${known_for_department}</li>
